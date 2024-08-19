@@ -1,0 +1,158 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%% Include Packages %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page proterties
+\documentclass[hidelinks,12pt,a4paper]{article}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fourier} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\usepackage{hyperref}
+\usepackage{forloop}
+\usepackage{xcolor}
+\usepackage{ocgx2}
+\usepackage{calc}
+\usepackage{pgfmath}
+\usepackage{tabularx}
+
+% For images
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\graphicspath{{Images}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Variables %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Functional Variables 
+\newcounter{NModules} % Modules number 
+%-Where insert the number of modules----------------------------------------------------------------------------------
+\setcounter{NModules}{3}
+%---------------------------------------------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Technical Variabiles
+
+\newcounter{LI} % Used in loops
+\newcounter{TEMP} % Used as Temp variable to rappresent numbers in list
+
+%Iterative variabiles
+\newcounter{ILAP}
+\newcounter{ILAPTEMP}
+\newcounter{NModulesTemp}
+\setcounter{NModulesTemp}{\value{NModules} - 1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% New Commands Part %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% To overlap modules more easy
+\newcommand{\overlap}[2]{
+	\makebox[0ex][l]{#1}#2
+}
+
+% To Create Correct Buttons
+\newcommand{\button}[2]{ % First argument: The module name | Second argumen: The number link
+		\hspace*{1mm} \textcolor{blue}{\switchocg{#1#2}{#1}}
+}
+
+% To Create a Correct Module
+\newcommand{\module}[3]{  % First argument: The module name (same of the linked button) | Second argumen: The number link | Thirth argument: The body
+	\begin{ocg}{#1#2}{#1#2}{off}
+		{
+			\begin{minipage}{0.9\textwidth}
+			#3
+			\end{minipage}
+		}
+	\end{ocg}
+}
+
+% To Parse Arrays
+\newcommand{\parse}[1]{
+	\pgfmathparse{#1}\pgfmathresult
+}
+
+% To add modules in a easy way in the document 
+\newcommand{\ilap}[1]{%
+	\ifnum \value{NModulesTemp}>#1%
+	{%
+		\setcounter{ILAPTEMP}{#1}% To avoid an arror
+		\addtocounter{ILAP}{1}%
+		\overlap{\parse{\modules[\arabic{ILAPTEMP}]}}{\ilap{\arabic{ILAP}}}%
+	}%
+	\else%
+	{%
+		\setcounter{ILAPTEMP}{#1}%
+		%
+		\parse{\modules[\arabic{ILAPTEMP}]}%
+		%
+	}%
+	\fi%
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Modules %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{modules.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Document %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%% Buttons Section
+	
+	\begin{center}
+		{
+		\Large
+		Select the modules for creating the document to print \newline
+		\color{red}{Remember to print only the important pages}
+		}
+	\end{center}
+	
+	%%%%%%%%%%%% ForLoop Section
+	\forloop{LI}{0}{\value{LI} < \value{NModules}}{
+		\vspace*{1mm}
+		\setcounter{TEMP}{\value{LI} + 1}
+%-Line where insert buttons ------------------------------------------------------------------------------------------
+		\arabic{TEMP}. \button{FModule}{\arabic{LI}} \button{SModule}{\arabic{LI}} \button{TModule}{\arabic{LI}}
+%---------------------------------------------------------------------------------------------------------------------
+		\vspace*{0.5mm} 
+		\hrule
+	}
+	% Carefull at newgape
+	\thispagestyle{empty}
+	\newpage
+	\setcounter{page}{1}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%% Header
+	\vspace*{-3cm}
+	\begin{minipage}{0.9\textwidth}
+		\begin{tabularx}{\textwidth}{XX}
+			{
+			\raggedright
+			\includegraphics[scale=0.015]{Lorem_Ipsum_Logo.jpg}
+			}&{
+			\vspace*{-2cm}
+			\raggedleft
+			%-Place where insert the header ------------------------------------------------------------------------------------------
+			-Some informations here-
+			%--------------------------------------------------------------------------------------------------------------------------
+			}
+		\end{tabularx}
+	\end{minipage}
+	\hrule
+	\vspace*{7mm}
+	%%%%%%%%%%%%%%%%%%%%%%%%%% Body
+
+%-Line where insert modules-------------------------------------------------------------------------------------------
+	\def\modules{{"\module{FModule}{\arabic{LI}}{\FModule}",
+					"\module{SModule}{\arabic{LI}}{\SModule}",
+					"\module{TModule}{\arabic{LI}}{\TModule}"
+					}}
+%---------------------------------------------------------------------------------------------------------------------
+
+	\begin{minipage}{\textwidth}
+		\forloop{LI}{0}{\value{LI} < \value{NModules}}{			
+		\setcounter{ILAP}{0}
+		\ilap{\arabic{ILAP}}
+		\newline
+		}
+	\end{minipage}
+	
+\end{document}
