@@ -4,11 +4,11 @@
 
 1. Write the modules inside `modules.tex` as a new command.
 2. On `Modular_document.tex` insert the modules quantity.
-  ```
-  %-Where insert the number of modules----------------------------------------------------------------------------------
-  \setcounter{NModules}{3}
-  %---------------------------------------------------------------------------------------------------------------------
-  ```
+  	```
+  	%-Where insert the number of modules----------------------------------------------------------------------------------
+  	\setcounter{NModules}{3}
+  	%---------------------------------------------------------------------------------------------------------------------
+  	```
 3. Link the modules in this section to creating the buttons for activate/deactivate modules.
    ```
    %-Line where insert buttons ------------------------------------------------------------------------------------------
