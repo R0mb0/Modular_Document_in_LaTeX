@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use these materials, please cite them as below."
+authors:
+- family-names: "Rombaldoni"
+  given-names: "Francesco"
+title: "Modular_Document_in_LaTeX"
+version: 1.0.0
+date-released: 2024-08-19
+url: "https://github.com/R0mb0/Modular_Document_in_LaTeX"
