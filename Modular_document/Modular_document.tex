@@ -4,6 +4,7 @@
 \documentclass[hidelinks,12pt,a4paper]{article}
 \usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage[none]{hyphenat}
 \usepackage{fourier} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Packages
@@ -14,6 +15,7 @@
 \usepackage{calc}
 \usepackage{pgfmath}
 \usepackage{tabularx}
+\usepackage{ragged2e}
 
 % For images
 \usepackage{graphicx}
@@ -97,24 +99,33 @@
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%% Buttons Section
 	
-	\begin{center}
-		{
-		\Large
-		Select the modules for creating the document to print \newline
-		\color{red}{Remember to print only the important pages}
+	% Protection from the print
+	\begin{ocg}[viewocg=always, printocg=never]{Toggle show/hide example}{ocg2}{1}%
+		\switchocg{ocg1}{
+		\Centering{
+				\Large
+				Select the modules for creating the document to print \newline
+				\color{red}{Remember to print only the important pages}
+			}
+		\newline
+		\vspace*{3mm}
+		\RaggedRight{
+				%%%%%%%%%%%% ForLoop Section
+				\forloop{LI}{0}{\value{LI} < \value{NModules}}{
+				\vspace*{1mm}
+				\setcounter{TEMP}{\value{LI} + 1}
+				%-Line where insert buttons ------------------------------------------------------------------------------------------
+				\arabic{TEMP}. \button{FModule}{\arabic{LI}} \button{SModule}{\arabic{LI}} \button{TModule}{\arabic{LI}}
+				%---------------------------------------------------------------------------------------------------------------------
+				\newline
+				\vspace*{-3mm} 
+				\par\noindent\rule{\textwidth}{0.4pt}
+%				\hrulefill
+%				\hrule
+			}
+			}
 		}
-	\end{center}
-	
-	%%%%%%%%%%%% ForLoop Section
-	\forloop{LI}{0}{\value{LI} < \value{NModules}}{
-		\vspace*{1mm}
-		\setcounter{TEMP}{\value{LI} + 1}
-%-Line where insert buttons ------------------------------------------------------------------------------------------
-		\arabic{TEMP}. \button{FModule}{\arabic{LI}} \button{SModule}{\arabic{LI}} \button{TModule}{\arabic{LI}}
-%---------------------------------------------------------------------------------------------------------------------
-		\vspace*{0.5mm} 
-		\hrule
-	}
+	\end{ocg}
 	% Carefull at newgape
 	\thispagestyle{empty}
 	\newpage
