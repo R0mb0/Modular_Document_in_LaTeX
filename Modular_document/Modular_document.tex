@@ -15,7 +15,9 @@
 \usepackage{calc}
 \usepackage{pgfmath}
 \usepackage{tabularx}
+\usepackage{wasysym}
 \usepackage{ragged2e}
+\usepackage{tikz}
 
 % For images
 \usepackage{graphicx}
@@ -53,6 +55,20 @@
 % To Create Correct Buttons
 \newcommand{\button}[2]{ % First argument: The module name | Second argumen: The number link
 		\hspace*{1mm} \textcolor{blue}{\switchocg{#1#2}{#1}}
+}
+
+% To coreate the mark for the next command
+\newcommand{\tikzcircle}[2][red,fill=green]{\tikz[baseline=-0.5ex]\draw[#1,radius=#2] (0,0) circle ;}%
+
+
+%Command to add a mark on actived modules
+\newcommand{\Mark}[2]{
+	\begin{ocg}{#1#2}{#1#2}{off}
+		{
+			%\tikzcircle{2pt}
+			\color{green}{\CIRCLE} \hspace*{-5mm}
+		}
+	\end{ocg}
 }
 
 % To Create a Correct Module
@@ -115,7 +131,8 @@
 				\vspace*{1mm}
 				\setcounter{TEMP}{\value{LI} + 1}
 				%-Line where insert buttons ------------------------------------------------------------------------------------------
-				\arabic{TEMP}. \button{FModule}{\arabic{LI}} \button{SModule}{\arabic{LI}} \button{TModule}{\arabic{LI}}
+				\hspace*{1mm}
+				\arabic{TEMP}. \Mark{FModule}{\arabic{LI}}\button{FModule}{\arabic{LI}} \Mark{SModule}{\arabic{LI}}\button{SModule}{\arabic{LI}} \Mark{TModule}{\arabic{LI}}\button{TModule}{\arabic{LI}}
 				%---------------------------------------------------------------------------------------------------------------------
 				\newline
 				\vspace*{-3mm} 
