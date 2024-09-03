@@ -82,6 +82,20 @@
 	\end{ocg}
 }
 
+% To create Buttons with Mark
+\newcommand{\BMark}[2]{
+		\Mark{#1}{#2}\button{#1}{#2}
+}
+
+%Command to add a mark on actived modules
+\newcommand{\Mark}[2]{
+	\begin{ocg}{#1#2}{#1#2}{off}
+		{
+			\switchocg{#1#2}{\color{green}{\CIRCLE}} \hspace*{-5mm}
+		}
+	\end{ocg}
+}
+
 % To Parse Arrays
 \newcommand{\parse}[1]{
 	\pgfmathparse{#1}\pgfmathresult
@@ -132,7 +146,7 @@
 				\setcounter{TEMP}{\value{LI} + 1}
 				%-Line where insert buttons ------------------------------------------------------------------------------------------
 				\hspace*{1mm}
-				\arabic{TEMP}. \Mark{FModule}{\arabic{LI}}\button{FModule}{\arabic{LI}} \Mark{SModule}{\arabic{LI}}\button{SModule}{\arabic{LI}} \Mark{TModule}{\arabic{LI}}\button{TModule}{\arabic{LI}}
+				\arabic{TEMP}. \BMark{FModule}{\arabic{LI}} \BMark{SModule}{\arabic{LI}} \BMark{TModule}{\arabic{LI}}
 				%---------------------------------------------------------------------------------------------------------------------
 				\newline
 				\vspace*{-3mm} 
