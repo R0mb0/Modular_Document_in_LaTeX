@@ -60,17 +60,6 @@
 % To coreate the mark for the next command
 \newcommand{\tikzcircle}[2][red,fill=green]{\tikz[baseline=-0.5ex]\draw[#1,radius=#2] (0,0) circle ;}%
 
-
-%Command to add a mark on actived modules
-\newcommand{\Mark}[2]{
-	\begin{ocg}{#1#2}{#1#2}{off}
-		{
-			%\tikzcircle{2pt}
-			\color{green}{\CIRCLE} \hspace*{-5mm}
-		}
-	\end{ocg}
-}
-
 % To Create a Correct Module
 \newcommand{\module}[3]{  % First argument: The module name (same of the linked button) | Second argumen: The number link | Thirth argument: The body
 	\begin{ocg}{#1#2}{#1#2}{off}
