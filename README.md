@@ -4,6 +4,10 @@
 [![Compilation_Test](https://github.com/R0mb0/Modular_Document_in_LaTeX/actions/workflows/Compilation_Test.yml/badge.svg)](https://github.com/R0mb0/Modular_Document_in_LaTeX/actions/workflows/Compilation_Test.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2c5a717e727f46148a54f2b63131da49)](https://app.codacy.com/gh/R0mb0/Modular_Document_in_LaTeX/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/R0mb0/Modular_Document_in_LaTeX)
+[![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/R0mb0/Modular_Document_in_LaTeX)
+[![Donate](https://img.shields.io/badge/PayPal-Donate%20to%20Author-blue.svg)](http://paypal.me/R0mb0)
+
 ## How to add modules (or parts) and personalize the demo document
 
 1. Write the modules inside `modules.tex` as a new command.
