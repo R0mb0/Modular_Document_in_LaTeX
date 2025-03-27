@@ -12,19 +12,19 @@
 
 1. Write the modules inside `modules.tex` as a new command.
 2. On `Modular_document.tex` insert the modules quantity.
-  	```
+  	```latex
   	%-Where insert the number of modules----------------------------------------------------------------------------------
   	\setcounter{NModules}{3}
   	%---------------------------------------------------------------------------------------------------------------------
   	```
 3. Link the modules in this section to creating the buttons for activate/deactivate modules.
-   ```
+   ```latex
    %-Line where insert buttons ------------------------------------------------------------------------------------------
 		\arabic{TEMP}. \button{FModule}{\arabic{LI}} \button{SModule}{\arabic{LI}} \button{TModule}{\arabic{LI}}
     %---------------------------------------------------------------------------------------------------------------------
    ```
 4. Change page header at this point
-   ```
+   ```latex
    \begin{minipage}{0.9\textwidth}
 		\begin{tabularx}{\textwidth}{XX}
 			{
@@ -41,7 +41,7 @@
 	\end{minipage}
    ```
 5. Add modules here to generating the document body
-      ```
+      ```latex
       %-Line where insert modules-------------------------------------------------------------------------------------------
 	  \def\modules{{"\module{FModule}{\arabic{LI}}{\FModule}",
 					"\module{SModule}{\arabic{LI}}{\SModule}",
