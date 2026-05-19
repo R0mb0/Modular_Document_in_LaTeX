@@ -2,6 +2,7 @@
 
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 [![Compilation_Test](https://github.com/R0mb0/Modular_Document_in_LaTeX/actions/workflows/Compilation_Test.yml/badge.svg)](https://github.com/R0mb0/Modular_Document_in_LaTeX/actions/workflows/Compilation_Test.yml)
+[![pages-build-deployment](https://github.com/R0mb0/Modular_Document_in_LaTeX/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/R0mb0/Modular_Document_in_LaTeX/actions/workflows/pages/pages-build-deployment)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2c5a717e727f46148a54f2b63131da49)](https://app.codacy.com/gh/R0mb0/Modular_Document_in_LaTeX/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/R0mb0/Modular_Document_in_LaTeX)
